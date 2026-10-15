@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Wrench, Phone, MessageCircle, MapPin, ShieldCheck, Zap, ArrowUp, Navigation } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/business';
 import { generateWhatsAppLink } from '../utils/whatsapp';
@@ -75,34 +76,34 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#services" className="hover:text-cyanTech-300 transition-colors">
-                  Washing Machine Repair
-                </a>
+                <Link to="/services/washing-machine-repair-dubai" className="hover:text-cyanTech-300 transition-colors">
+                  Washing Machine Repair Dubai
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-cyanTech-300 transition-colors">
+                <Link to="/services/refrigerator-repair-dubai" className="hover:text-cyanTech-300 transition-colors">
                   Refrigerator & Chiller Fix
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-cyanTech-300 transition-colors">
+                <Link to="/services/cooking-range-repair-dubai" className="hover:text-cyanTech-300 transition-colors">
                   Cooking Range & Oven Repair
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-cyanTech-300 transition-colors">
-                  Dishwasher Troubleshooting
-                </a>
+                <Link to="/services/dishwasher-repair-dubai" className="hover:text-cyanTech-300 transition-colors">
+                  Dishwasher Repair & Descaling
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-cyanTech-300 transition-colors">
+                <Link to="/services/split-ac-repair-dubai" className="hover:text-cyanTech-300 transition-colors">
                   Split AC Cleaning & Gas Refill
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-cyanTech-300 transition-colors">
-                  Microwave & Small Appliances
-                </a>
+                <Link to="/brands" className="hover:text-cyanTech-300 transition-colors">
+                  All Brands Serviced (OEM Parts)
+                </Link>
               </li>
             </ul>
           </div>
@@ -114,34 +115,34 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#coverage" className="hover:text-cyanTech-300 transition-colors">
-                  International City, Dubai
-                </a>
+                <Link to="/areas/international-city" className="hover:text-cyanTech-300 transition-colors">
+                  International City (Workshop Hub)
+                </Link>
               </li>
               <li>
-                <a href="#coverage" className="hover:text-cyanTech-300 transition-colors">
+                <Link to="/areas/dubai-silicon-oasis" className="hover:text-cyanTech-300 transition-colors">
                   Dubai Silicon Oasis (DSO)
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#coverage" className="hover:text-cyanTech-300 transition-colors">
+                <Link to="/areas/mirdif" className="hover:text-cyanTech-300 transition-colors">
                   Mirdif & Uptown Mirdif
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#coverage" className="hover:text-cyanTech-300 transition-colors">
+                <Link to="/areas/al-warqa" className="hover:text-cyanTech-300 transition-colors">
                   Al Warqa 1, 2, 3 & 4
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#coverage" className="hover:text-cyanTech-300 transition-colors">
-                  Business Bay & Downtown
-                </a>
+                <Link to="/areas/business-bay" className="hover:text-cyanTech-300 transition-colors">
+                  Business Bay
+                </Link>
               </li>
               <li>
-                <a href="#coverage" className="hover:text-cyanTech-300 transition-colors">
-                  Nad Al Sheba & Academic City
-                </a>
+                <Link to="/areas/downtown-dubai" className="hover:text-cyanTech-300 transition-colors">
+                  Downtown Dubai & Marina
+                </Link>
               </li>
             </ul>
           </div>
@@ -149,38 +150,38 @@ export const Footer: React.FC = () => {
           {/* Quick Tools & Guides */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Diagnostics & Location
+              Pricing & Information
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#estimator" className="hover:text-cyanTech-300 transition-colors">
-                  Cost Estimator Calculator
-                </a>
+                <Link to="/pricing" className="hover:text-cyanTech-300 transition-colors">
+                  Dubai Repair Cost Guide
+                </Link>
               </li>
               <li>
-                <a href="#journey" className="hover:text-cyanTech-300 transition-colors">
-                  4-Step Customer Process
-                </a>
+                <Link to="/faq" className="hover:text-cyanTech-300 transition-colors">
+                  Frequently Asked Questions (FAQ)
+                </Link>
               </li>
               <li>
-                <a href="#reviews" className="hover:text-cyanTech-300 transition-colors">
+                <Link to="/brands" className="hover:text-cyanTech-300 transition-colors">
+                  Brand Compatibility Matrix
+                </Link>
+              </li>
+              <li>
+                <a href="/#reviews" className="hover:text-cyanTech-300 transition-colors">
                   Verified Google Reviews (4.9★)
                 </a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-cyanTech-300 transition-colors">
-                  Frequently Asked Questions
+                <a href="/#coverage" className="hover:text-cyanTech-300 transition-colors">
+                  Live Fleet Radar Tracker
                 </a>
               </li>
               <li>
-                <a href="#seo-guide" className="hover:text-cyanTech-300 transition-colors">
-                  Dubai Technical Guide & SEO
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-cyanTech-300 transition-colors">
-                  Shop 10 Workshop & Map
-                </a>
+                <Link to="/contact" className="hover:text-cyanTech-300 transition-colors">
+                  Shop 10 Workshop & Directions
+                </Link>
               </li>
             </ul>
           </div>

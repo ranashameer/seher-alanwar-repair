@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { TrustTicker } from './components/TrustTicker';
-import { BrandMarquee } from './components/BrandMarquee';
-import { ServiceCatalog } from './components/ServiceCatalog';
-import { CostEstimator } from './components/CostEstimator';
-import { CoverageChecker } from './components/CoverageChecker';
-import { CustomerJourney } from './components/CustomerJourney';
-import { ReviewsSection } from './components/ReviewsSection';
-import { FaqSection } from './components/FaqSection';
-import { DubaiSeoContent } from './components/DubaiSeoContent';
-import { ContactLocationHub } from './components/ContactLocationHub';
 import { Footer } from './components/Footer';
 import { MobileBottomDeck } from './components/MobileBottomDeck';
 import { LiveActivityToast } from './components/LiveActivityToast';
 import { BookingModal } from './components/BookingModal';
+
+import { HomePage } from './pages/HomePage';
+import { ServiceDetailPage } from './pages/ServiceDetailPage';
+import { AreaDetailPage } from './pages/AreaDetailPage';
+import { PricingPage } from './pages/PricingPage';
+import { FaqPage } from './pages/FaqPage';
+import { ContactPage } from './pages/ContactPage';
+import { BrandsPage } from './pages/BrandsPage';
 
 export const App: React.FC = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -30,63 +28,65 @@ export const App: React.FC = () => {
     setPreselectedService(undefined);
   };
 
+  const getBasename = () => {
+    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/seher-alanwar-repair')) {
+      return '/seher-alanwar-repair';
+    }
+    return '/';
+  };
+
   return (
-    <div className="min-h-screen bg-obsidian-950 text-slate-100 flex flex-col font-sans selection:bg-electric-600 selection:text-white pb-20 sm:pb-0 overflow-x-hidden">
-      {/* Sticky Glassmorphic Navbar */}
-      <Navbar onOpenBooking={handleOpenBooking} />
+    <BrowserRouter basename={getBasename()}>
+      <div className="min-h-screen bg-obsidian-950 text-slate-100 flex flex-col font-sans selection:bg-electric-600 selection:text-white pb-20 sm:pb-0 overflow-x-hidden">
+        {/* Sticky Glassmorphic Navbar with Router Links */}
+        <Navbar onOpenBooking={handleOpenBooking} />
 
-      {/* Main Content Area */}
-      <main className="flex-1">
-        {/* Hero Section with Value Proposition and Interactive Diagnostic Widget */}
-        <Hero onOpenBooking={() => handleOpenBooking()} />
+        {/* Main Content Area with Routing */}
+        <main className="flex-1">
+          <Routes>
+            {/* Home Page */}
+            <Route path="/" element={<HomePage onOpenBooking={handleOpenBooking} />} />
 
-        {/* Metrics & Trust Ticker */}
-        <TrustTicker />
+            {/* Dedicated Service Landing Pages */}
+            <Route path="/services/:slug" element={<ServiceDetailPage onOpenBooking={handleOpenBooking} />} />
 
-        {/* Continuous Brand Compatibility Marquee */}
-        <BrandMarquee />
+            {/* Dedicated Local Dubai Area Hubs */}
+            <Route path="/areas/:slug" element={<AreaDetailPage onOpenBooking={handleOpenBooking} />} />
 
-        {/* Interactive Service Catalog with Tabs & Micro-Modals */}
-        <ServiceCatalog onOpenBooking={handleOpenBooking} />
+            {/* Transparent Dubai Pricing Guide */}
+            <Route path="/pricing" element={<PricingPage onOpenBooking={handleOpenBooking} />} />
 
-        {/* Interactive Cost & Price Estimator */}
-        <CostEstimator />
+            {/* Comprehensive Technical FAQ Knowledge Base */}
+            <Route path="/faq" element={<FaqPage />} />
 
-        {/* Live Dubai Coverage Area Checker */}
-        <CoverageChecker />
+            {/* Brand Compatibility Matrix */}
+            <Route path="/brands" element={<BrandsPage />} />
 
-        {/* 4-Step Transparent Customer Roadmap */}
-        <CustomerJourney />
+            {/* Contact, Directions & Workshop Hub */}
+            <Route path="/contact" element={<ContactPage />} />
 
-        {/* Verified Social Proof & Google Reviews */}
-        <ReviewsSection />
+            {/* Catch-All Fallback */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
 
-        {/* High-Impact SEO FAQ Section */}
-        <FaqSection />
+        {/* Comprehensive Footer with Deep Internal Anchor Links */}
+        <Footer />
 
-        {/* Technical SEO Content & Dubai Climate Knowledge Base */}
-        <DubaiSeoContent />
+        {/* Mobile Floating Action Deck (Natural Thumb Zone) */}
+        <MobileBottomDeck />
 
-        {/* Location & Contact Hub with Google Map Integration */}
-        <ContactLocationHub />
-      </main>
+        {/* Social Proof Live Activity Toast Notification */}
+        <LiveActivityToast />
 
-      {/* Comprehensive Footer */}
-      <Footer />
-
-      {/* Mobile Floating Action Deck (Natural Thumb Zone: Call 45% + WhatsApp Live 55%) */}
-      <MobileBottomDeck />
-
-      {/* Social Proof Live Activity Toast Notification */}
-      <LiveActivityToast />
-
-      {/* Global Booking Modal */}
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={handleCloseBooking}
-        preselectedService={preselectedService}
-      />
-    </div>
+        {/* Global Booking Modal */}
+        <BookingModal
+          isOpen={isBookingOpen}
+          onClose={handleCloseBooking}
+          preselectedService={preselectedService}
+        />
+      </div>
+    </BrowserRouter>
   );
 };
 

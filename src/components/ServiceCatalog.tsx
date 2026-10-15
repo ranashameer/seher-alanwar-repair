@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   CheckCircle2, 
@@ -118,7 +119,9 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({ onOpenBooking })
                   </div>
 
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyanTech-300 transition-colors">
-                    {service.title}
+                    <Link to={`/services/${service.id === 'split-ac-service' ? 'split-ac-repair-dubai' : service.id + '-dubai'}`} className="hover:underline">
+                      {service.title}
+                    </Link>
                   </h3>
 
                   <p className="text-xs text-slate-300 leading-relaxed mb-4 line-clamp-2">
@@ -156,12 +159,12 @@ export const ServiceCatalog: React.FC<ServiceCatalogProps> = ({ onOpenBooking })
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => setSelectedService(service)}
+                    <Link
+                      to={`/services/${service.id === 'split-ac-service' ? 'split-ac-repair-dubai' : service.id + '-dubai'}`}
                       className="text-xs font-bold text-electric-400 hover:text-cyanTech-300 flex items-center gap-1 underline underline-offset-4"
                     >
-                      <Info className="w-3.5 h-3.5" /> Details
-                    </button>
+                      <Info className="w-3.5 h-3.5" /> Full Guide
+                    </Link>
                   </div>
 
                   {/* Action Buttons */}

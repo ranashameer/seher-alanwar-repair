@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Wrench, Phone, Calendar, Menu, X, ShieldCheck, Zap } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/business';
@@ -10,6 +11,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,21 +23,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Services', href: '#services' },
-    { label: 'Estimator', href: '#estimator' },
-    { label: 'Dubai Coverage', href: '#coverage' },
-    { label: 'Process', href: '#journey' },
-    { label: 'Reviews', href: '#reviews' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'SEO Guide', href: '#seo-guide' },
-    { label: 'Location', href: '#contact' },
+    { label: 'Home', to: '/' },
+    { label: 'Services', to: '/services/washing-machine-repair-dubai' },
+    { label: 'Pricing Guide', to: '/pricing' },
+    { label: 'Coverage Areas', to: '/areas/international-city' },
+    { label: 'Brands', to: '/brands' },
+    { label: 'FAQs', to: '/faq' },
+    { label: 'Contact', to: '/contact' },
   ];
 
-  const handleNavClick = (href: string) => {
+  const handleLinkClick = (to: string) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (to.startsWith('/#')) {
+      const anchor = to.slice(1);
+      if (location.pathname === '/') {
+        const el = document.querySelector(anchor);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        navigate('/');
+        setTimeout(() => {
+          const el = document.querySelector(anchor);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
     }
   };
 
@@ -50,8 +61,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Brand Logo & Name */}
-            <a
-              href="#"
+            <Link
+              to="/"
               className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-electric-500 rounded-lg p-1"
             >
               <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-electric-700 via-electric-600 to-cyanTech-400 p-[1.5px] shadow-electric-glow shrink-0">
@@ -75,19 +86,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                   Electric Household Appliances Repair & Maintenance
                 </span>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden xl:flex items-center gap-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.to}
+                  onClick={() => handleLinkClick(link.to)}
                   className="text-xs font-bold text-slate-300 hover:text-white hover:text-cyanTech-400 transition-colors duration-200 relative group py-1"
                 >
                   {link.label}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-electric-500 transition-all duration-300 group-hover:w-full rounded-full" />
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -164,17 +176,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
 
               <div className="grid grid-cols-2 gap-2 mb-4">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.href);
+                    to={link.to}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      handleLinkClick(link.to);
                     }}
                     className="px-3 py-2.5 rounded-lg bg-obsidian-850 border border-white/5 text-xs font-bold text-slate-200 hover:text-white hover:bg-electric-600/20 transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
 

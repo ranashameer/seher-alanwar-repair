@@ -79,13 +79,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               <span>EXCLUSIVELY DUBAI: 30–60 MIN DOORSTEP SERVICE</span>
             </div>
 
-            {/* H1 Headline */}
+            {/* H1 Headline - Primary Money Keyword */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.08] mb-5 font-sans">
-              Broken Appliance?{' '}
+              Home Appliances Repair in Dubai{' '}
               <span className="text-gradient-electric block sm:inline">
-                We Fix It Fast,
+                – Rapid 30–60 Min
               </span>{' '}
-              Right at Your Doorstep.
+              Doorstep Service
             </h1>
 
             {/* Dynamic Subheader - Exclusively Dubai Focused */}

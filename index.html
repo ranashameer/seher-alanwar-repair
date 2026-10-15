@@ -5,14 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563EB'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     
+    <!-- Single Page App redirect handler for GitHub Pages -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+
     <!-- Primary Meta Tags -->
-    <title>Seher Alanwar Appliances Repair Dubai | 30-60 Min Doorstep Emergency Service</title>
-    <meta name="title" content="Seher Alanwar Appliances Repair Dubai | 30-60 Min Doorstep Emergency Service" />
-    <meta name="description" content="Dubai's premier electric household appliance repair & maintenance service. Fast 30-60 min arrival across International City, Silicon Oasis, Mirdif, Al Warqa & all Dubai. Washing machines, refrigerators, dishwashers, cooking ranges & AC. Up to 90-day warranty on genuine OEM parts." />
-    <meta name="keywords" content="appliance repair dubai, washing machine repair dubai, refrigerator repair international city, cooking range repair dubai, dishwasher repair dubai, split ac repair dubai, seher alanwar trading, 24/7 appliance repair uae, emergency fridge repair dubai, bosch repair dubai, samsung appliance service dubai, lg repair dubai, siemens repair dubai" />
+    <title>Home Appliances Repair Dubai | 30-Min Doorstep Service</title>
+    <meta name="title" content="Home Appliances Repair Dubai | 30-Min Doorstep Service" />
+    <meta name="description" content="Fast home appliances repair in Dubai. 30-60 min doorstep arrival, genuine OEM parts, 90-day warranty & free inspection with repair. Call or WhatsApp 24/7!" />
+    <meta name="keywords" content="home appliances repair dubai, appliance repair dubai, washing machine repair dubai, refrigerator repair dubai, dishwasher repair dubai, cooking range repair dubai, gas stove repair dubai, emergency appliance repair uae" />
     <meta name="theme-color" content="#090D16" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <link rel="canonical" href="https://seheralanwar-repair.ae/" />
+    <link rel="canonical" href="https://ranashameer.github.io/seher-alanwar-repair/" />
 
     <!-- Local UAE Geotags -->
     <meta name="geo.region" content="AE-DU" />
@@ -22,9 +36,9 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="business.business" />
-    <meta property="og:url" content="https://seheralanwar-repair.ae/" />
-    <meta property="og:title" content="Seher Alanwar Appliances Repair Dubai | 30-60 Min Doorstep Service" />
-    <meta property="og:description" content="Certified technicians for refrigerator, washer, stove & dishwasher repairs across Dubai. 30-60 min arrival, up to 90 days warranty, 4.9★ rating based on 150+ reviews." />
+    <meta property="og:url" content="https://ranashameer.github.io/seher-alanwar-repair/" />
+    <meta property="og:title" content="Home Appliances Repair Dubai | 30-Min Doorstep Service" />
+    <meta property="og:description" content="Fast home appliances repair in Dubai. 30-60 min doorstep arrival, genuine OEM parts, 90-day warranty & free inspection with repair." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80" />
     <meta property="og:locale" content="en_AE" />
     <meta property="og:site_name" content="Seher Alanwar Trading Dubai" />
