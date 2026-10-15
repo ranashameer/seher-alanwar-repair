@@ -52,7 +52,7 @@ export const CostEstimator: React.FC = () => {
   });
 
   return (
-    <section id="estimator" className="py-20 bg-obsidian-950 relative overflow-hidden scroll-mt-20">
+    <section id="estimator" className="py-12 sm:py-20 bg-obsidian-950 relative overflow-hidden scroll-mt-24 sm:scroll-mt-20">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-electric-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyanTech-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -60,42 +60,47 @@ export const CostEstimator: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Title */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-electric-950 border border-electric-500/30 text-cyanTech-300 text-xs font-bold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-electric-950 border border-electric-500/30 text-cyanTech-300 text-xs font-bold uppercase tracking-wider mb-2 sm:mb-3">
             <Calculator className="w-3.5 h-3.5 text-cyanTech-400" />
             <span>100% Upfront Dubai Pricing</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 font-sans">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-2 sm:mb-4 font-sans">
             Transparent Repair Cost Estimator
           </h2>
-          <p className="text-base text-slate-300 leading-relaxed">
+          <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
             No surprise invoices. Calculate realistic Dubai market pricing bracket instantly based on appliance type and issue severity.
           </p>
         </div>
 
         {/* Estimator Interactive Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           {/* Controls (Left 7 Cols) */}
-          <div className="lg:col-span-7 bg-obsidian-900/90 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-xl">
+          <div className="lg:col-span-7 bg-obsidian-900/90 border border-white/10 rounded-2xl p-4 sm:p-8 backdrop-blur-xl shadow-xl">
             
             {/* Step 1: Appliance Select */}
-            <div className="mb-6">
-              <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-3">
-                1. Select Appliance
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <label className="text-[11px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider block">
+                  1. Select Appliance
+                </label>
+                <span className="text-[10px] font-bold text-cyanTech-400 uppercase tracking-wider">
+                  {appliance.name}
+                </span>
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-3 gap-1.5 sm:gap-2.5">
                 {APPLIANCES.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => setSelectedApplianceId(item.id)}
-                    className={`p-3 rounded-xl border text-left transition-all ${
+                    className={`p-2 sm:p-3 rounded-xl border text-center sm:text-left transition-all ${
                       selectedApplianceId === item.id
-                        ? 'bg-electric-600/25 border-electric-500 text-white shadow-electric-glow'
+                        ? 'bg-electric-600/30 border-electric-400 text-white shadow-electric-glow scale-[1.02]'
                         : 'bg-obsidian-800/80 border-white/5 text-slate-400 hover:text-white hover:border-white/20'
                     }`}
                   >
-                    <div className="text-lg mb-1">
+                    <div className="text-base sm:text-lg mb-0.5 sm:mb-1">
                       {item.id === 'washing-machine' && '🧺'}
                       {item.id === 'refrigerator' && '❄️'}
                       {item.id === 'cooking-range' && '🔥'}
@@ -103,61 +108,61 @@ export const CostEstimator: React.FC = () => {
                       {item.id === 'split-ac' && '💨'}
                       {item.id === 'microwave' && '⚡'}
                     </div>
-                    <span className="text-xs font-bold block">{item.name}</span>
+                    <span className="text-[11px] sm:text-xs font-bold block leading-tight">{item.name}</span>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Step 2: Severity Selector */}
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <label className="text-[11px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider block">
                   2. Problem Severity Level
                 </label>
-                <span className="text-xs font-bold text-cyanTech-300">
+                <span className="text-[11px] sm:text-xs font-bold text-cyanTech-300">
                   {severityLabel}
                 </span>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 mb-3">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-2 sm:mb-3">
                 {[
                   { id: 'minor', label: 'Minor / Quick Fix', badge: 'Fastest' },
-                  { id: 'standard', label: 'Standard / Sensor/Pump', badge: 'Common' },
-                  { id: 'major', label: 'Major / Motor/PCB', badge: 'Complex' }
+                  { id: 'standard', label: 'Standard / Pump', badge: 'Common' },
+                  { id: 'major', label: 'Major / Motor', badge: 'Complex' }
                 ].map((s) => (
                   <button
                     key={s.id}
                     onClick={() => setSeverityLevel(s.id as any)}
-                    className={`p-3 rounded-xl border text-center transition-all ${
+                    className={`p-2 sm:p-3 rounded-xl border text-center transition-all ${
                       severityLevel === s.id
-                        ? 'bg-cyanTech-500/20 border-cyanTech-400 text-white font-bold shadow-sm'
+                        ? 'bg-cyanTech-500/25 border-cyanTech-400 text-white font-bold shadow-sm scale-[1.02]'
                         : 'bg-obsidian-800/80 border-white/5 text-slate-400 hover:text-white'
                     }`}
                   >
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-white/10 text-cyanTech-300 mb-1 inline-block">
+                    <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-white/10 text-cyanTech-300 mb-0.5 sm:mb-1 inline-block">
                       {s.badge}
                     </span>
-                    <span className="text-xs block font-semibold leading-tight">{s.label}</span>
+                    <span className="text-[11px] sm:text-xs block font-semibold leading-tight">{s.label}</span>
                   </button>
                 ))}
               </div>
 
-              <p className="text-xs text-slate-400 italic bg-obsidian-800/50 p-2.5 rounded-lg border border-white/5">
-                Typical Scope: {severityDesc}
+              <p className="text-[10px] sm:text-xs text-slate-400 italic bg-obsidian-800/50 p-2 sm:p-2.5 rounded-lg border border-white/5">
+                Scope: {severityDesc}
               </p>
             </div>
 
             {/* Step 3: Genuine Parts Included Toggle */}
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+            <div className="pt-3 sm:pt-4 border-t border-white/10 flex items-center justify-between">
               <div>
-                <span className="text-xs font-bold text-white block">Include Genuine Spare Parts Estimate</span>
-                <span className="text-[11px] text-slate-400">OEM genuine components with 90 days warranty</span>
+                <span className="text-[11px] sm:text-xs font-bold text-white block">Include Genuine Spare Parts</span>
+                <span className="text-[10px] sm:text-[11px] text-slate-400">OEM components with 90 days warranty</span>
               </div>
               <button
                 type="button"
                 onClick={() => setIncludeParts(!includeParts)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none shrink-0 ${
                   includeParts ? 'bg-electric-600' : 'bg-obsidian-700'
                 }`}
               >
@@ -167,6 +172,42 @@ export const CostEstimator: React.FC = () => {
                   }`}
                 />
               </button>
+            </div>
+
+            {/* MOBILE ONLY INSTANT LIVE RESULT BAR */}
+            <div className="mt-4 pt-3.5 border-t border-white/10 lg:hidden bg-gradient-to-r from-electric-950/90 via-obsidian-850 to-obsidian-900 p-3.5 rounded-2xl border border-electric-500/30 shadow-lg">
+              <div className="flex items-center justify-between mb-2.5">
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">
+                    Calculated Quote ({appliance.name})
+                  </span>
+                  <div className="text-xl font-black text-white font-sans flex items-baseline gap-1.5">
+                    <span className="text-cyanTech-400">AED {totalMin} – {totalMax}</span>
+                    <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+                      Free Inspection
+                    </span>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <span className="text-[10px] font-bold text-slate-300 block">
+                    ⏱️ {estimatedTime}m fix
+                  </span>
+                  <span className="text-[9px] text-amber-400 font-bold">
+                    🛡️ 90-Day Warranty
+                  </span>
+                </div>
+              </div>
+
+              <motion.a
+                whileTap={{ scale: 0.97 }}
+                href={whatsAppQuoteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-3 rounded-xl font-black text-xs uppercase tracking-wider text-obsidian-950 bg-whatsapp hover:bg-whatsapp-hover shadow-whatsapp-glow flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4 fill-obsidian-950 text-whatsapp" />
+                <span>Lock Quote on WhatsApp (AED {totalMin}-{totalMax})</span>
+              </motion.a>
             </div>
 
           </div>

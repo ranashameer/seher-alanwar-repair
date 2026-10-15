@@ -94,7 +94,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     pricingStartingAED: 120,
     warrantyPeriod: '90 Days Warranty',
     responseTime: '40-60 mins arrival',
-    image: 'https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1581622558667-3419a8dc5f83?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'split-ac-service',

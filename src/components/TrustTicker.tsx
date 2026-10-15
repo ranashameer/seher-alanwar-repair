@@ -43,9 +43,9 @@ export const TrustTicker: React.FC = () => {
   ];
 
   return (
-    <section className="relative -mt-6 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="glass-panel rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/60 border border-white/10 backdrop-blur-2xl">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
+    <section className="relative mt-6 sm:-mt-6 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="glass-panel rounded-2xl p-4 sm:p-8 shadow-2xl shadow-black/60 border border-white/10 backdrop-blur-2xl">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
           {metrics.map((metric, idx) => {
             const Icon = metric.icon;
             return (
@@ -54,20 +54,20 @@ export const TrustTicker: React.FC = () => {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.04 }}
+                whileHover={{ y: -4, scale: 1.02 }}
                 transition={{ duration: 0.3, delay: idx * 0.08 }}
-                className={`flex flex-col items-center text-center cursor-default transition-all ${idx > 0 && idx % 2 === 0 ? 'pt-6 lg:pt-0' : ''} ${idx % 2 === 1 ? 'pt-6 sm:pt-0' : ''} lg:px-4`}
+                className="flex flex-col items-center justify-between text-center cursor-default bg-obsidian-900/50 lg:bg-transparent border border-white/5 lg:border-0 rounded-xl p-3.5 sm:p-5 lg:p-0 h-full"
               >
-                <div className={`w-11 h-11 rounded-xl ${metric.bgColor} border ${metric.borderColor} flex items-center justify-center ${metric.color} mb-3 shadow-inner`}>
+                <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl ${metric.bgColor} border ${metric.borderColor} flex items-center justify-center ${metric.color} mb-2.5 shadow-inner`}>
                   <Icon className="w-5 h-5" />
                 </div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-1 font-sans">
+                <div className="text-xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-1 font-sans">
                   {metric.value}
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider mb-1">
+                <div className="text-[11px] sm:text-xs lg:text-sm font-bold text-slate-200 uppercase tracking-wider mb-1 leading-tight">
                   {metric.label}
                 </div>
-                <div className="text-[11px] text-slate-400 font-medium">
+                <div className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
                   {metric.subtext}
                 </div>
               </motion.div>

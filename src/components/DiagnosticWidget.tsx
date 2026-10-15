@@ -254,12 +254,12 @@ export const DiagnosticWidget: React.FC = () => {
         </motion.a>
 
         {/* Micro-guarantee footer */}
-        <div className="flex items-center justify-between mt-3 text-[10px] text-slate-400 font-medium px-1">
+        <div className="flex flex-wrap items-center justify-around sm:justify-between gap-1.5 mt-3 pt-2 text-[10px] text-slate-400 font-medium border-t border-white/5">
           <span className="flex items-center gap-1">
             <CheckCircle2 className="w-3 h-3 text-emerald-400" /> No upfront charge
           </span>
           <span className="flex items-center gap-1">
-            <CheckCircle2 className="w-3 h-3 text-emerald-400" /> 90 Days Formal Warranty
+            <CheckCircle2 className="w-3 h-3 text-emerald-400" /> 90-Day Formal Warranty
           </span>
           <span className="flex items-center gap-1">
             <CheckCircle2 className="w-3 h-3 text-emerald-400" /> OEM Parts Only
